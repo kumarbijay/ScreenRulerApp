@@ -1,0 +1,15 @@
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\bin\Debug\ScreenRulerApp.exe.config
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\bin\Debug\ScreenRulerApp.exe
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\bin\Debug\ScreenRulerApp.pdb
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.csproj.AssemblyReference.cache
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.Properties.Resources.resources
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.csproj.GenerateResource.cache
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.csproj.CoreCompileInputs.cache
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.exe
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.pdb
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.Form1.resources
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\bin\Debug\ScreenRulerApp.exe.manifest
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\bin\Debug\ScreenRulerApp.application
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.exe.manifest
+C:\Users\BIJKUMARSAHOO\source\repos\ScreenRulerApp\ScreenRulerApp\obj\Debug\ScreenRulerApp.application

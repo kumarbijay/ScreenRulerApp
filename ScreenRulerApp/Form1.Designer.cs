@@ -1,4 +1,6 @@
-﻿namespace ScreenRulerApp
+﻿using System;
+
+namespace ScreenRulerApp
 {
     partial class Form1
     {
@@ -39,7 +41,6 @@
             this.Text = "Screen Ruler App";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
-
         }
 
         #endregion

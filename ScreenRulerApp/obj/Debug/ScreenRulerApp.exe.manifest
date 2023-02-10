@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ScreenRulerApp.exe" size="11200">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ScreenRulerApp.exe" size="11712">
       <assemblyIdentity name="ScreenRulerApp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>N5pSuTAwEYdwgjX8sr1139PZ/AUN86E/K997mitfPm4=</dsig:DigestValue>
+        <dsig:DigestValue>ZVH9S8bEWzYEY4zA/xfz27tK1Mlf2wY9Y/z26NQCifU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

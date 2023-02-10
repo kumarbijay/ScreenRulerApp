@@ -31,6 +31,8 @@ namespace ScreenRulerApp
             rulerForm.MouseDown += new MouseEventHandler(RulerForm_MouseDown);
             rulerForm.MouseUp += new MouseEventHandler(RulerForm_MouseUp);
             rulerForm.MouseMove += new MouseEventHandler(RulerForm_MouseMove);
+            rulerForm.Load += new System.EventHandler(RulerForm_Load);
+
             Button btn1 = new Button();
             btn1.Location = new Point(10, 10);
             btn1.Text = "Start";
@@ -81,35 +83,65 @@ namespace ScreenRulerApp
 
         private void RulerForm_Paint(object sender, PaintEventArgs e)
         {
-            using (Pen pen = new Pen(Color.Black, 1))
+            float screenDPI = e.Graphics.DpiX;
+            float cmSizeInPixels = screenDPI * (1f / 2.54f); // 1 cm in pixels
+            float mmSizeInPixels = cmSizeInPixels / 10;
+
+            e.Graphics.DrawLine(new Pen(Brushes.Black, 2), startPoint, endPoint);
+
+            // Draw division marks along the line
+            float distance = (float)Math.Sqrt(Math.Pow(endPoint.X - startPoint.X, 2) + Math.Pow(endPoint.Y - startPoint.Y, 2));
+            int cmCount = (int)(distance / cmSizeInPixels);
+
+            for (int i = 0; i <= cmCount; i++)
             {
-                float dpi = GetDPI();
-                float cmToPixel = dpi/ 2.54f;
-                e.Graphics.DrawLine(pen, startPoint, endPoint);
-                double distance = Distance(startPoint, endPoint);
-                double distanceCm = distance / cmToPixel;
-                string measurement = string.Format("{0:0.00} pixels ({1:0.00} cm)", distance, distanceCm);
-                SizeF size = e.Graphics.MeasureString(measurement, rulerForm.Font);
-                PointF location = new PointF((startPoint.X + endPoint.X) / 2, (startPoint.Y + endPoint.Y) / 2 - size.Height);
-                e.Graphics.DrawString(measurement, rulerForm.Font, Brushes.Black, location);
-                
+                PointF cmDivisionPoint = new PointF(
+                    startPoint.X + i * cmSizeInPixels * (endPoint.X - startPoint.X) / distance,
+                    startPoint.Y + i * cmSizeInPixels * (endPoint.Y - startPoint.Y) / distance
+                );
+
+                e.Graphics.DrawLine(new Pen(Brushes.Black, 2), cmDivisionPoint.X, cmDivisionPoint.Y - 10, cmDivisionPoint.X, cmDivisionPoint.Y + 10);
+
+                // Display cm label
+                if (i != cmCount)
+                {
+                    SizeF labelSize = e.Graphics.MeasureString((i).ToString(), this.Font);
+                    PointF labelLocation = new PointF(
+                        cmDivisionPoint.X - labelSize.Width / 2,
+                        cmDivisionPoint.Y + 15
+                    );
+                    e.Graphics.DrawString((i).ToString(), this.Font, Brushes.Black, labelLocation);
+                }
+
+                // Draw mm division marks
+                for (int j = 1; j < 10; j++)
+                {
+                    PointF mmDivisionPoint = new PointF(
+                        cmDivisionPoint.X + j * mmSizeInPixels * (endPoint.X - startPoint.X) / distance,
+                        cmDivisionPoint.Y + j * mmSizeInPixels * (endPoint.Y - startPoint.Y) / distance
+                    );
+                    if (j == 5)
+                    {
+                        e.Graphics.DrawLine(new Pen(Brushes.Black, 1), mmDivisionPoint.X, mmDivisionPoint.Y - 15, mmDivisionPoint.X, mmDivisionPoint.Y + 15);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawLine(new Pen(Brushes.Black, 1), mmDivisionPoint.X, mmDivisionPoint.Y - 10, mmDivisionPoint.X, mmDivisionPoint.Y + 10);
+                    }
+                }
             }
         }
 
-        private float GetDPI()
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            using (Graphics graphics = this.CreateGraphics())
-            {
-                return graphics.DpiX;
-            }
+            rulerForm.Close();
         }
 
-        private double Distance(Point p1, Point p2)
+        private void btnMinimize_Click(object sender, EventArgs e)
         {
-            double a = p1.X - p2.X;
-            double b = p1.Y - p2.Y;
-            return Math.Sqrt(a * a + b * b);
+            rulerForm.WindowState = FormWindowState.Minimized;
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -126,6 +158,30 @@ namespace ScreenRulerApp
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void RulerForm_Load(object sender, EventArgs e)
+        {
+            Button btnClose = new Button();
+            btnClose.Text = "X";
+            btnClose.BackColor = Color.Red;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Size = new Size(30, 30);
+            btnClose.Location = new Point(rulerForm.Width - 35, 5);
+            btnClose.Click += new EventHandler(btnClose_Click);
+
+            Button btnMinimize = new Button();
+            btnMinimize.Text = "-";
+            btnMinimize.BackColor = Color.White;
+            btnMinimize.FlatAppearance.BorderSize = 0;
+            btnMinimize.FlatStyle = FlatStyle.Flat;
+            btnMinimize.Size = new Size(30, 30);
+            btnMinimize.Location = new Point(rulerForm.Width - 70, 5);
+            btnMinimize.Click += new EventHandler(btnMinimize_Click);
+
+            rulerForm.Controls.Add(btnClose);
+            rulerForm.Controls.Add(btnMinimize);
         }
     }
 }
